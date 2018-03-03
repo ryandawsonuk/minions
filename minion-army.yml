@@ -1,0 +1,161 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: one-eyed-minion
+  labels:
+    serviceType: one-eyed-minion
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: one-eyed-minion
+      labels:
+        serviceType: one-eyed-minion
+    spec:
+      containers:
+        - name: one-eyed-minion
+          image: minion:latest
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8080
+          env:
+          - name: JAVA_OPTS
+            value: -Xmx64m -Xms64m
+          - name: SPRING_APPLICATION_NAME
+            value: "one-eyed-minion"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: one-eyed-minion-entrypoint
+  namespace: default
+spec:
+  selector:
+    serviceType: one-eyed-minion
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080
+  type: NodePort
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: two-eyed-minion
+  labels:
+    serviceType: two-eyed-minion
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: two-eyed-minion
+      labels:
+        serviceType: two-eyed-minion
+    spec:
+      containers:
+        - name: two-eyed-minion
+          image: minion:latest
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8080
+          env:
+          - name: JAVA_OPTS
+            value: -Xmx64m -Xms64m
+          - name: SPRING_APPLICATION_NAME
+            value: "two-eyed-minion"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: two-eyed-minion-entrypoint
+  namespace: default
+spec:
+  selector:
+    serviceType: two-eyed-minion
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30081
+  type: NodePort
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: sad-minion
+  labels:
+    serviceType: sad-minion
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: sad-minion
+      labels:
+        serviceType: sad-minion
+    spec:
+      containers:
+        - name: sad-minion
+          image: minion:latest
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8080
+          env:
+          - name: JAVA_OPTS
+            value: -Xmx64m -Xms64m
+          - name: SPRING_APPLICATION_NAME
+            value: "sad-minion"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sad-minion-entrypoint
+  namespace: default
+spec:
+  selector:
+    serviceType: sad-minion
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30082
+  type: NodePort
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: happy-minion
+  labels:
+    serviceType: happy-minion
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: happy-minion
+      labels:
+        serviceType: happy-minion
+    spec:
+      containers:
+        - name: happy-minion
+          image: minion:latest
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8080
+          env:
+          - name: JAVA_OPTS
+            value: -Xmx64m -Xms64m
+          - name: SPRING_APPLICATION_NAME
+            value: "happy-minion"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: happy-minion-entrypoint
+  namespace: default
+spec:
+  selector:
+    serviceType: happy-minion
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30083
+  type: NodePort
+
