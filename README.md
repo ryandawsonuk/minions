@@ -25,10 +25,10 @@ Deploy the army
 
 To see the troop types: 
 
-`open http://$(minikube ip):30080`
-`open http://$(minikube ip):30081`
-`open http://$(minikube ip):30082`
-`open http://$(minikube ip):30083`
+`open http://$(minikube ip):30080` <br/>
+`open http://$(minikube ip):30081` <br/>
+`open http://$(minikube ip):30082` <br/>
+`open http://$(minikube ip):30083` <br/>
 
 To see the whole army 
 
@@ -39,3 +39,5 @@ To create more troops of each type do `minikube dashboard` and go to the service
 To destroy the army 
 
 `kubectl delete -f minion-army.yml`
+
+Stop minikube with `minikube stop`
