@@ -13,6 +13,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
 public class Controller {
 
+    private final String version = "0.1";
+
     private MinionsLibrary minionsLibrary;
 
     @Value("${spring.application.name}")
@@ -28,8 +30,9 @@ public class Controller {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Host: ").append(InetAddress.getLocalHost().getHostName()).append("<br/>");
-        stringBuilder.append("Minion: ").append(appName).append("<br/>");
+        stringBuilder.append("Minion Type: ").append(appName).append("<br/>");
         stringBuilder.append("IP: ").append(InetAddress.getLocalHost().getHostAddress()).append("<br/>");
+        stringBuilder.append("Version: ").append(version).append("<br/>");
         stringBuilder.append(minionsLibrary.getMinion(appName));
         return stringBuilder.toString();
     }

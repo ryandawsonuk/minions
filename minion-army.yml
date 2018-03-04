@@ -7,6 +7,12 @@ metadata:
     serviceType: one-eyed-minion
 spec:
   replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   template:
     metadata:
       name: one-eyed-minion
@@ -47,6 +53,12 @@ metadata:
     serviceType: two-eyed-minion
 spec:
   replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   template:
     metadata:
       name: two-eyed-minion
@@ -87,6 +99,12 @@ metadata:
     serviceType: sad-minion
 spec:
   replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   template:
     metadata:
       name: sad-minion
@@ -127,6 +145,12 @@ metadata:
     serviceType: happy-minion
 spec:
   replicas: 2
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
   template:
     metadata:
       name: happy-minion
